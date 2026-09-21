@@ -1,0 +1,19 @@
+name: runflare-otel-collector
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and push
+        uses: runflare/actions/build@v1
+        with:
+          api-key: ${{ secrets.RUNFLARE_API_KEY }}
+          name: pumo-otel-collector
+          dockerfile: Dockerfile
+          tags: latest
