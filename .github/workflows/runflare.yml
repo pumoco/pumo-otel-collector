@@ -11,12 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Validate OTel collector config
-        run: |
-          docker run --rm -v $PWD/otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml \
-            otel/opentelemetry-collector-contrib:0.120.0 \
-            --config=/etc/otelcol-contrib/config.yaml \
-            --dry-run 2>&1
-        shell: bash
+        run: sh scripts/validate-config.sh
 
   build-and-deploy:
     runs-on: ubuntu-latest
