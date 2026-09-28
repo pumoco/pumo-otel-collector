@@ -20,8 +20,8 @@ processors:
         action: upsert
 
 exporters:
-  otlp:
-    endpoint: "http://pumo-jaeger-server:4318"  # internal Runflare service name
+  otlphttp:
+    endpoint: "${env:JAEGER_OTLP_ENDPOINT:-http://pumo-jaeger-server:4318}"
     tls:
       insecure: true
     compression: gzip
@@ -43,12 +43,12 @@ service:
     traces:
       receivers: [otlp]
       processors: [memory_limiter, attributes, batch]
-      exporters: [otlp, debug]
+      exporters: [otlphttp, debug]
     metrics:
       receivers: [otlp]
       processors: [memory_limiter, attributes, batch]
-      exporters: [otlp, debug]
+      exporters: [otlphttp, debug]
     logs:
       receivers: [otlp]
       processors: [memory_limiter, attributes, batch]
-      exporters: [otlp, debug]
+      exporters: [otlphttp, debug]

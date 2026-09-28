@@ -1,0 +1,10 @@
+{
+  "name": "pumo-otel-collector",
+  "port": 5000,
+  "expose": [5000, 4317, 4318],
+  "env": {
+    "JAEGER_OTLP_ENDPOINT": "http://pumo-jaeger-server:4318",
+    "OTEL_EXPORTER_OTLP_ENDPOINT": "http://pumo-jaeger-server:4318",
+    "OTEL_EXPORTER_OTLP_PROTOCOL": "http/protobuf"
+  }
+}
