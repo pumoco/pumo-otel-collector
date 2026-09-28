@@ -21,7 +21,7 @@ processors:
 
 exporters:
   otlp:
-    endpoint: "http://jager.pumolab.ir:4318"  # Jaeger OTLP HTTP endpoint
+    endpoint: "http://pumo-jaeger-server:4318"  # internal Runflare service name
     tls:
       insecure: true
     compression: gzip
