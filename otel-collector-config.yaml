@@ -21,12 +21,10 @@ processors:
 
 exporters:
   otlp:
-    endpoint: "https://ingest.signoz.cloud:443"  # override via OTEL_EXPORTER_OTLP_ENDPOINT env
+    endpoint: "http://jager.pumolab.ir:4318"  # Jaeger OTLP HTTP endpoint
     tls:
-      insecure: false
+      insecure: true
     compression: gzip
-    headers:
-      signoz-access-token: "${env:SIGNOZ_ACCESS_TOKEN}"
 
   debug:
     verbosity: detailed
